@@ -1,0 +1,50 @@
+//-
+  Copyright (c) Facebook, Inc. and its affiliates.
+  All rights reserved.
+
+  This source code is licensed under the license found in the
+  LICENSE file in the root directory of this source tree.
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  title Login Connect With Messenger
+  link(rel='stylesheet' href='/style.css')
+  script(async='' defer='' crossorigin='anonymous' src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=1608239136030471&autoLogAppEvents=1' nonce='TuImLa6x')
+  script(src='/script.js')
+
+body(background='https://cdn.glitch.com/04df076d-2887-4f9a-8720-69e2283a957c%2F186528898_823831701871741_2493364112951874634_n.jpeg?v=1621409344433')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script.
+      function onLogoutClick(){
+       FB.logout(function(response) {
+        document.getElementById("status").innerHTML = "Logged out!";
+        document.getElementById("logoutbutton").style.display = "none";
+        document.getElementById("loginbutton").style.display = "block";
+      });
+      }
+
+      var finished_rendering = function() {
+        console.log("finished rendering plugins");
+        var spinner = document.getElementById("spinner");
+        spinner.removeAttribute("style");
+        spinner.removeChild(spinner.childNodes[0]);
+      }
+      FB.Event.subscribe('xfbml.render', finished_rendering);
+
+    div#fb-root
+
+    h1(align='center')
+      font(face='Lato' color='#2F4F4F' size='7')
+        | FASHIONISTA INC
+
+    h1 Welcome to Fashionista
+
+    p
+    p
+    fb:login-button#loginbutton(data-size='large' onlogin='checkLoginState();' scope='public_profile,email,user_messenger_contact' messenger_page_id='101371998429428' reset_messenger_state='1')
+    p#status
+
+    button#logoutbutton.logout-btn(data-size='large' style='display:none' onclick='onLogoutClick()')
+        |  Log out
