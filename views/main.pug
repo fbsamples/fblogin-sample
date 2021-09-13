@@ -19,6 +19,7 @@ body(background='https://cdn.glitch.com/04df076d-2887-4f9a-8720-69e2283a957c%2F1
     script.
       function onLogoutClick(){
        FB.logout(function(response) {
+        console.log("finished rendering plugins");
         document.getElementById("status").innerHTML = "Logged out!";
         document.getElementById("logoutbutton").style.display = "none";
         document.getElementById("loginbutton").style.display = "block";
@@ -26,7 +27,6 @@ body(background='https://cdn.glitch.com/04df076d-2887-4f9a-8720-69e2283a957c%2F1
       }
 
       var finished_rendering = function() {
-        console.log("finished rendering plugins");
         var spinner = document.getElementById("spinner");
         spinner.removeAttribute("style");
         spinner.removeChild(spinner.childNodes[0]);
